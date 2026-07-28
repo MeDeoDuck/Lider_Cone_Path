@@ -42,7 +42,7 @@ LiDAR 점군 인지부터 콘 좌우 구분·중앙 경로 생성까지 C++로 �
 전체 알고리즘은 여섯 단계로 나뉩니다. 각 단계는 PCL·Eigen·OpenCV의 기본 연산 위에 직접 작성한 로직입니다.
 
 ### 1. 점군 전처리·구면 투영 (`preprocessor.cpp`, `pointcloud_generator.cpp`)
-- **캘리브레이션·본체 제거**: Eigen `Affine3f`로 라이다-GPS 좌표를 보정하고, PassThrough로 차체(-0.4~1.5m x, -0.6~0.6m y)에 찍힌 포인트를 제거합니다.
+- **캘리브레이션·본체 제거**: Eigen `Affine3f`로 라이다-GPS 좌표를 보정하고, PassThrough로 차체(x={-0.4~1.5m}, y={-0.6~0.6m})에 찍힌 포인트를 제거합니다.
 - **구면 투영 (`getFullCloud`)**: 각 포인트의 수직각으로 링(row) 인덱스를, 수평각으로 컬럼(column) 인덱스를 계산해 `N_SCAN(32) x Horizon_SCAN(1024)` 격자에 배치합니다. LeGO-LOAM류의 range image 구성을 직접 옮겨 담았습니다.
 - **지면 분리 (`getGrdRemovalClouds`)**: 같은 컬럼에서 아래·위 링 포인트의 높이차로 상승각을 구하고, 임계각 이하이면 지면으로 라벨링합니다. `cv::Mat` 한 장을 지면 라벨 버퍼로 씁니다.
 - **관심 영역·각도 크롭 (`cutPointCloud`)**: x·y·z 범위와 xy 평면 각도 범위로 콘 후보 영역만 남깁니다.
