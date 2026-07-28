@@ -1,5 +1,5 @@
 # Lider_Cone_Path 
-LiDAR 점군 인지부터 콘 좌우 구분·중앙 경로 생성까지 C++로 직접 구현한 자율주행 콘 주행 인지 스택
+>LiDAR 점군 인지부터 콘 좌우 구분·중앙 경로 생성까지 C++로 직접 구현한 자율주행 콘 주행 인지 스택
 
 ![Language](https://img.shields.io/badge/language-C%2B%2B-00599C)
 ![Middleware](https://img.shields.io/badge/middleware-ROS1-22314E)
